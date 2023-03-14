@@ -35,7 +35,7 @@ const server = http.createServer((req, res) => {
     const ext = path.extname(req.url);
     if (req.method === "GET" && ext) {
       try {
-        const resBody = readFileSync('.' + req.url);
+        const resBody = readFileSync("." + req.url);
         res.statusCode = 200;
         if (ext === ".jpg" || ext === ".jpeg") {
           res.setHeader("Content-Type", "image/jpeg");
@@ -47,11 +47,7 @@ const server = http.createServer((req, res) => {
         res.end(resBody);
         return;
       } catch {
-        console.error(
-          "Cannot find asset",
-          path.basename(req.url),
-          "in assets folder"
-        );
+        console.error("Cannot find asset", path.basename(req.url), "in assets folder");
       }
     }
     // Page Not Found
@@ -63,6 +59,6 @@ const server = http.createServer((req, res) => {
   });
 });
 // Set the port to 5000
-const port = 5000;
+const port = 5001;
 // Tell the port to listen for requests on localhost:5000
 server.listen(port, () => console.log("Server is running on port", port));
